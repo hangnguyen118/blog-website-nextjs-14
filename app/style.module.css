@@ -1,0 +1,9 @@
+.blogSection {
+    resize: horizontal;
+    overflow: hidden;
+    max-width: 100%;
+    margin-top: 5rem;
+}
+.wrapper {
+  flex: 1;
+}
