@@ -1,32 +1,9 @@
-@use "variables";
-*,
-*::after,
-*::before {
+html, body {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
-body {
-    background-color: variables.$primary-color;
+    display: flex;
+    flex-direction: column;
 }
 main {
-    min-height: calc(100vh - 13rem);
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-
-    &:hover,
-    &forcus {
-        text-decoration: none;
-    }
-}
-
-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
+    flex: 1
 }

@@ -1,6 +1,10 @@
+import '@mantine/core/styles.css';
+
 import type { Metadata } from "next";
+import { MantineProvider } from "@mantine/core";
+import '@/sass/main.scss';
 import Header from "./_components/Header/Header";
-import "../sass/main.scss";
+import { Footer } from './_components/Footer/Footer';
 
 export const metadata: Metadata = {
   title: "Blog website",
@@ -15,8 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+      <MantineProvider>
         <Header/>
         {children}
+      <Footer/>
+      </MantineProvider>
       </body>
     </html>
   );
