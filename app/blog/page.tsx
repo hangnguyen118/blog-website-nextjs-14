@@ -1,21 +1,22 @@
+import { SimpleGrid, Text } from "@mantine/core";
+import { BadgeCard } from "../_components/BadgeCard/BadgeCard";
+import { fetchDataFromStrapi, processInfoBlogs } from "@/untils/strapi.utils";
+
 export default async function Page() {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-        next: {
-            revalidate: 60
-        }
-    });
-    console.log("!")
-    const data = await res.json();
+    const data = await fetchDataFromStrapi('api/blogs?populate=*');
+    const blogsData = processInfoBlogs(data);
+    const blogCards = blogsData.map((item) => (
+        <BadgeCard key={item.id} image={item.previewImage} title={item.title} description={item.description} country={item.country}/>
+    ))
+
     return (
-        <div>
-            <h3>Blog page</h3>
-            <div>
-                {
-                    data.map((post: {userId: string, id: string, title:string, body:string}) => (
-                        <p key={post.id}>{post.title}</p>
-                    ))
-                }
-            </div>
-        </div>
+        <>
+            <Text size="xl" fw={900} variant="gradient" gradient={{ from: 'blue', to: 'cyan', deg: 90 }} mt="md" mb="md">
+                Blog mới nhất 2024!
+            </Text>
+            <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="lg">
+                {blogCards}
+            </SimpleGrid>
+        </>
     )
 }

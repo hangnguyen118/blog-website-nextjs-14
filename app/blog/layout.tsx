@@ -1,3 +1,4 @@
+import { Container } from "@mantine/core";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,9 +12,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <div>
-            Blog layout
-            {children}
-        </div>
+        <main>
+            <Container pt="lg" pb="xl">
+                {children}
+            </Container>
+        </main>
     );
 }

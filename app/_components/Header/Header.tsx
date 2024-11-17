@@ -5,7 +5,9 @@ import { IconChevronDown, IconSearch } from '@tabler/icons-react';
 import classes from './Header.module.css';
 
 const links = [
-  { link: '/about', label: 'Features' },
+  { link: '/blog', label: 'Blog' },
+  { link: '/feature', label: 'Features' },
+  { link: '/about', label: 'About' },
   {
     link: '#1',
     label: 'Learn',
@@ -16,8 +18,6 @@ const links = [
       { link: '/blog', label: 'Blog' },
     ],
   },
-  { link: '/about', label: 'About' },
-  { link: '/pricing', label: 'Pricing' },
   {
     link: '#2',
     label: 'Support',
@@ -59,7 +59,6 @@ export default function Header() {
         key={link.label}
         href={link.link}
         className={classes.link}
-        onClick={(event) => event.preventDefault()}
       >
         {link.label}
       </a>
@@ -84,7 +83,7 @@ export default function Header() {
             visibleFrom="xs"
           />
           <Group>
-             <Button component="a" href="/login" variant="filled">Login</Button>
+            <Button component="a" href="/login" variant="filled">Login</Button>
           </Group>
         </div>
       </Container>

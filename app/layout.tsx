@@ -19,11 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <MantineProvider>
-        <Header/>
-        {children}
-      <Footer/>
-      </MantineProvider>
+        <MantineProvider>
+          <Header />
+          {children}
+          <Footer />
+        </MantineProvider>
       </body>
     </html>
   );
