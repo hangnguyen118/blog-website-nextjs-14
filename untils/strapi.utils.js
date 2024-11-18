@@ -12,7 +12,6 @@ export async function fetchDataFromStrapi(router) {
     }
 }
 export function processInfoBlogs(data) {
-    console.log(data);
     return data.map((infoBlog) => ({
         documentId: infoBlog.documentId,
         title: infoBlog.title,

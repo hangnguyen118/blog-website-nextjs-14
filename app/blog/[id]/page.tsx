@@ -1,20 +1,3 @@
-import { notFound } from "next/navigation";
-
-async function fetchPost(id: string) {
-    try {
-        const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-            next: {
-                revalidate: 60
-            }
-        });
-        const data = await res.json();
-        return data;
-    } catch (error) {
-        console.log("Blog Error", error);
-        notFound();
-    }
-}
-
 export default async function page({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
     const data = await fetchPost(id);

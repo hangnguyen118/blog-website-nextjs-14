@@ -1,0 +1,36 @@
+.wrapper {
+  min-height: rem(80px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--mantine-color-blue-0);
+  padding: calc(var(--mantine-spacing-xl) * 1);
+  border-radius: var(--mantine-radius-lg);
+  margin-bottom: calc(var(--mantine-spacing-xl) * 1);
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding: calc(var(--mantine-spacing-xl) * 0.5);
+    display: block;
+  }
+}
+.form {
+  display: flex;
+  min-width: rem(300px);
+  align-items: center;
+  margin-left: 3rem;
+  @media (max-width: $mantine-breakpoint-sm) {
+    margin-left: 0;
+  }
+}
+.controls {
+  display: flex;
+}
+.input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
+}
+
+.control {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

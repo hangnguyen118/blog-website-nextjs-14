@@ -6,7 +6,7 @@ type Badges = {
     label: string;
 }
 type BlogCardProps = {
-    image: string;
+    previewImage: string;
     title: string;
     country: string;
     description:
@@ -14,7 +14,7 @@ type BlogCardProps = {
     badges?: Badges[],
 };
 
-export function BadgeCard({ image, title, description, country, badges }: BlogCardProps) {
+export function BadgeCard({ previewImage, title, description, badges }: BlogCardProps) {
     badges = [
         { emoji: '☀️', label: 'Sunny weather' },
         { emoji: '🦓', label: 'Onsite zoo' },
@@ -32,7 +32,7 @@ export function BadgeCard({ image, title, description, country, badges }: BlogCa
     return (
         <Card withBorder radius="md" p="md" className={classes.card}>
             <CardSection>
-                <Image src={image} alt={title} height={180} />
+                <Image src={previewImage} alt={title} height={180} />
             </CardSection>
 
             <CardSection className={classes.section} mt="md">
