@@ -11,18 +11,25 @@ export async function fetchDataFromStrapi(router) {
         throw new Error(`Could not fetch data from ${url}`, error);
     }
 }
-export function processInfoBlogs(data) {
-    return data.map((infoBlog) => ({
-        documentId: infoBlog.documentId,
-        title: infoBlog.title,
-        userId: infoBlog.userId,
-        content: infoBlog.content,
-        previewImage: BASE_URL+infoBlog.image[0].url,
-        images: infoBlog.image.map((image) => ({
+export async function fetchBlogArticles() {
+    const blogData = await fetchDataFromStrapi("api/blogs?populate=*");
+    const proccessedBlogArticles = blogData.map(processInfoBlog);
+    proccessedBlogArticles.sort(
+        (a, z) => new Date(z.updatedAt) - new Date(a.updatedAt));
+    return proccessedBlogArticles;
+}
+function processInfoBlog(data) {
+    return {
+        documentId: data.documentId,
+        title: data.title,
+        userId: data.userId,
+        content: data.content,
+        previewImage: BASE_URL+data.image[0].url,
+        images: data.image.map((image) => ({
             url: image.url, 
             alt: image.alternativeText,
         })),
-        updatedAt: infoBlog.updatedAt,
-        id: infoBlog.id,
-    }));
+        updatedAt: data.updatedAt,
+        id: data.id,
+    };
 };

@@ -1,6 +1,6 @@
 import { SimpleGrid, Text } from "@mantine/core";
 import { BadgeCard } from "../_components/BadgeCard/BadgeCard";
-import { fetchDataFromStrapi, processInfoBlogs } from "@/untils/strapi.utils";
+import { fetchBlogArticles } from "@/untils/strapi.utils";
 import { HighlightArticle } from "../_components/HighlightArticle/page";
 import { ContactSection } from "../_components/ContactSection/page";
 type Badges = {
@@ -18,8 +18,7 @@ type BlogCardProps = {
 };
 
 export default async function Page() {
-    const data = await fetchDataFromStrapi('api/blogs?populate=*');
-    const blogsData = processInfoBlogs(data);
+    const blogsData = await fetchBlogArticles();
     const blogCards = blogsData.map((item: BlogCardProps) => (
         <BadgeCard key={item.id} previewImage={item.previewImage} title={item.title} description={item.description} country={item.country}/>
     ));
