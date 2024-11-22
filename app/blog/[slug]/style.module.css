@@ -1,0 +1,7 @@
+.wrapper {
+  max-width: 100%;
+  display: block;
+}
+.wrapper img {
+    max-width: 100%;
+}

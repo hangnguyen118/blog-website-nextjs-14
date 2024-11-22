@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
     return (
         <main>
-            <Container pt="lg" pb="xl">
+            <Container size="md" pt="lg" pb="xl">
                 {children}
             </Container>
         </main>

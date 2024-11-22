@@ -1,20 +1,10 @@
 import { IconHeart } from '@tabler/icons-react';
 import { Card, Image, Text, Group, Badge, Button, ActionIcon, CardSection } from '@mantine/core';
 import classes from './BadgeCard.module.css';
-type Badges = {
-    emoji: string;
-    label: string;
-}
-type BlogCardProps = {
-    previewImage: string;
-    title: string;
-    country: string;
-    description:
-        string;
-    badges?: Badges[],
-};
+import { BlogCardProps } from '@/types';
+import { formatDate } from '@/untils/strapi.utils';
 
-export function BadgeCard({ previewImage, title, description, badges }: BlogCardProps) {
+export function BadgeCard({ id, previewImage, title, description, badges, updatedAt }: BlogCardProps) {
     badges = [
         { emoji: '☀️', label: 'Sunny weather' },
         { emoji: '🦓', label: 'Onsite zoo' },
@@ -22,7 +12,7 @@ export function BadgeCard({ previewImage, title, description, badges }: BlogCard
         { emoji: '🌲', label: 'Nature' },
         { emoji: '🤽', label: 'Water sports' },
     ];
-    
+
     const features = badges.map((badge) => (
         <Badge variant="light" key={badge.label} leftSection={badge.emoji}>
             {badge.label}
@@ -30,22 +20,21 @@ export function BadgeCard({ previewImage, title, description, badges }: BlogCard
     ));
 
     return (
-        <Card withBorder radius="md" p="md" className={classes.card}>
+        <Card id={id} withBorder radius="md" p="md" className={classes.card}>
             <CardSection>
                 <Image src={previewImage} alt={title} height={180} />
             </CardSection>
-
             <CardSection className={classes.section} mt="md">
                 <Group justify="apart">
                     <Text fz="lg" fw={500}>
                         {title}
-                    </Text>
+                    </Text>                    
                 </Group>
+                <Text size="sm">{formatDate(updatedAt)}</Text>
                 <Text fz="sm" mt="xs">
                     {description}
                 </Text>
             </CardSection>
-
             <CardSection className={classes.section}>
                 <Text mt="md" className={classes.label} c="dimmed">
                     Perfect for you, if you enjoy
