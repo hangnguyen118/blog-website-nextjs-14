@@ -21,6 +21,7 @@ import messageBoxService from '@/app/_services/MessageBoxService';
 import { setCookie } from '@/app/_services/CookieService';
 import { useDispatch } from 'react-redux';
 import { setUser } from '@/app/_store/userSlice';
+import userService from '@/app/_services/UserService';
 
 export function AuthenticationForm() {
   const router = useRouter();
@@ -47,13 +48,12 @@ export function AuthenticationForm() {
       handlers.open();
       const response = await authService[type](form.values);
       if (response.status === 200) {
-        console.log(response.data)
         setCookie(response.data.jwt);
-        const safeUser = {
-          ...response.data.user,
-          image: response.data.user.image || '/default_avatar.jpg',
-        };
-        dispatch(setUser(safeUser));
+
+        const res = await userService.getData(response.data.jwt);
+          if (res.status === 200) {
+            dispatch(setUser(res.data));
+          }
         messageBoxService.notify(successMessage);
         router.push('/');
       }

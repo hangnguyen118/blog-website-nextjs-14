@@ -1,7 +1,6 @@
 import { Group, Image, Text, Title } from '@mantine/core';
 import classes from './HighlightArticle.module.css';
 import { BlogCardProps } from '@/types';
-import Link from 'next/link';
 import ButtonLink from '../ButtonLink/ButtonLink';
 
 export function HighlightArticle({data}: {data: BlogCardProps}) {
@@ -14,7 +13,7 @@ export function HighlightArticle({data}: {data: BlogCardProps}) {
                 </Title>
                 <Text c="dimmed" mt="md">{description}</Text>
                 <Group mt={30}>
-                <ButtonLink name='Read more' size='md' href={`/blog/${slug}`} style='1'></ButtonLink>
+                <ButtonLink name='Read more' href={`/blog/${slug}`} style='1'></ButtonLink>
                 </Group>
             </div>
             <Image src={previewImage} className={classes.image} alt='' />

@@ -15,7 +15,6 @@ export function LoadDataProvider({ children }: { children: React.ReactNode }) {
         if (token) {
           const response = await userService.getData(token);
           if (response.status === 200) {
-            console.log('user data', response.data);
             dispatch(setUser(response.data));
           }
         }

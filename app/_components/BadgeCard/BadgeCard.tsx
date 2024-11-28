@@ -3,7 +3,6 @@ import { Card, Image, Text, Group, Badge, ActionIcon, CardSection } from '@manti
 import classes from './BadgeCard.module.css';
 import { BlogCardProps } from '@/types';
 import { formatDate } from '@/untils/strapi.utils';
-import Link from 'next/link';
 import ButtonLink from '../ButtonLink/ButtonLink';
 
 export function BadgeCard({ id, previewImage, title, description, badges, updatedAt, slug }: BlogCardProps) {
@@ -47,7 +46,7 @@ export function BadgeCard({ id, previewImage, title, description, badges, update
             </CardSection>
 
             <Group mt="xs">
-                <ButtonLink name='Show details' size='sm' href={`/blog/${slug}`} style='1'></ButtonLink>
+                <ButtonLink name='Show details' href={`/blog/${slug}`} style='1'></ButtonLink>
                 <ActionIcon variant="default" radius="md" size={36}>
                     <IconHeart className={classes.like} stroke={1.5} />
                 </ActionIcon>

@@ -1,11 +1,10 @@
 import { BlogCardProps } from "@/types";
 import { fetchBlogArticles, formatDate } from "@/untils/strapi.utils";
-import { Button, Grid, GridCol, Group, Text } from "@mantine/core";
+import { Grid, GridCol, Group, Text } from "@mantine/core";
 import { remark } from 'remark';
 import html from 'remark-html';
 import classes from './style.module.css';
 import UserCard from "@/app/_components/UserCard/UserCard";
-import { IconArrowLeft } from "@tabler/icons-react";
 import ButtonLink from "@/app/_components/ButtonLink/ButtonLink";
 
 export default async function page({ params }: { params: Promise<{ slug: string }> }) {

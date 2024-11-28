@@ -1,5 +1,5 @@
 import { AuthorInfo } from "@/types"
-import { Avatar, Button, Group, Text } from "@mantine/core"
+import { Avatar, Group, Text } from "@mantine/core"
 import classes from './style.module.css';
 import Link from "next/link";
 
