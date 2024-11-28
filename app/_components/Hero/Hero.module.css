@@ -2,7 +2,11 @@
   background-color: #11284b;
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%),
+  background-image: linear-gradient(
+      250deg,
+      rgba(130, 201, 30, 0) 0%,
+      #062343 70%
+    ),
     url(https://images.unsplash.com/photo-1507646871303-331b8f659227?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max);
   padding-top: calc(var(--mantine-spacing-xl) * 3);
   padding-bottom: calc(var(--mantine-spacing-xl) * 3);
@@ -35,9 +39,7 @@
 
 .title {
   color: var(--mantine-color-white);
-  font-family:
-    Greycliff CF,
-    var(--mantine-font-family);
+  font-family: Greycliff CF, var(--mantine-font-family);
   font-weight: 900;
   line-height: 1.05;
   max-width: rem(500px);
@@ -61,14 +63,17 @@
 }
 
 .control {
+  background-color: var(--mantine-color-blue-6);
   padding-left: rem(50px);
   padding-right: rem(50px);
-  font-family:
-    Greycliff CF,
-    var(--mantine-font-family);
+  padding-bottom: rem(10px);
+  padding-top: rem(10px);
+  border-radius: var(--mantine-radius-md);
   font-size: rem(22px);
-
-  @media (max-width: $mantine-breakpoint-md) {
+  text-decoration: none;
+  color: var(--mantine-color-white);
+  font-weight: 500;
+  @media (max-width: $mantine-breakpoint-sm) {
     width: 100%;
   }
 }

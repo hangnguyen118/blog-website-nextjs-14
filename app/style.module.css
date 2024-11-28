@@ -7,3 +7,6 @@
 .wrapper {
   flex: 1;
 }
+.background {
+  background-color: var(--mantine-color-gray-0);
+}

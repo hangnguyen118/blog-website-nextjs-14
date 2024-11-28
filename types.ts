@@ -19,3 +19,9 @@ export type AuthorInfo = {
     status: string,
     avatarImage: string
 }
+export type TypeAuth = 'login' | 'register';
+export type ButtonLinkProps = {
+    name: string;
+    href: string
+    style: "1" | "2";
+  }

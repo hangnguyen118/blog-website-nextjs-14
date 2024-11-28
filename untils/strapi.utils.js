@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.STRAPI_URL || "http://localhost:1337";
+const BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "";
 
 export async function fetchDataFromStrapi(router) {
     const url = `${BASE_URL}/${router}`;

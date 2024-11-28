@@ -1,19 +1,17 @@
-import { Container, SimpleGrid } from "@mantine/core";
+import { Container } from "@mantine/core";
 import { Hero } from "./_components/Hero/Hero";
-import { BadgeCard } from "./_components/BadgeCard/BadgeCard";
 import classes from './style.module.css';
+import { fetchBlogArticles } from "@/untils/strapi.utils";
+import BlogsGrid from "./_components/BlogsGrid/BlogsGrid";
 
-export default function Home() {
+export default async function Home() {
+  const blogsData = await fetchBlogArticles();
   return (
-    <main>
+    <main className={classes.main}>
       <Hero />
-      <Container size='xl'>
+      <Container size='lg'>
         <div className={classes.blogSection}>
-          <SimpleGrid cols={{ base: 1, sm: 3}} spacing="lg">
-            <BadgeCard />
-            <BadgeCard />
-            <BadgeCard />
-          </SimpleGrid>
+          <BlogsGrid list={blogsData}/>
         </div>
       </Container>
     </main>

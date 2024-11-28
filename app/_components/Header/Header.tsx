@@ -1,8 +1,13 @@
-"use client"
+'use client'
+
 import { useDisclosure } from '@mantine/hooks';
-import { Menu, Group, Center, Burger, Container, Avatar, Autocomplete, Button } from '@mantine/core';
+import { Menu, Group, Center, Burger, Container, Avatar, Autocomplete } from '@mantine/core';
 import { IconChevronDown, IconSearch } from '@tabler/icons-react';
 import classes from './Header.module.css';
+import Link from 'next/link';
+import ButtonLink from '../ButtonLink/ButtonLink';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/_store/store';
 
 const links = [
   { link: '/blog', label: 'Blog' },
@@ -30,6 +35,7 @@ const links = [
 ];
 
 export default function Header() {
+  const currentUser = useSelector((state: RootState) => state.user);
   const [opened, { toggle }] = useDisclosure();
   const items = links.map((link) => {
     const menuItems = link.links?.map((item) => (
@@ -39,7 +45,7 @@ export default function Header() {
       return (
         <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
           <Menu.Target>
-            <a
+            <Link
               href={link.link}
               className={classes.link}
               onClick={(event) => event.preventDefault()}
@@ -48,29 +54,31 @@ export default function Header() {
                 <span className={classes.linkLabel}>{link.label}</span>
                 <IconChevronDown size="0.9rem" stroke={1.5} />
               </Center>
-            </a>
+            </Link>
           </Menu.Target>
           <Menu.Dropdown>{menuItems}</Menu.Dropdown>
         </Menu>
       );
     }
     return (
-      <a
+      <Link
         key={link.label}
         href={link.link}
         className={classes.link}
       >
         {link.label}
-      </a>
+      </Link>
     );
   });
+
   return (
     <header className={classes.header}>
       <Container size="md">
         <div className={classes.inner}>
           <Group>
             <Burger opened={opened} onClick={toggle} aria-label="Toggle navigation" size="sm" hiddenFrom="md" />
-            <Avatar h={50} w="auto" alt="WEB_LOGO" src="/assets/icons/logo.png" component="a" href='/' />
+            <Link href="/"><Avatar h={50} w="auto" alt="WEB_LOGO" src="/assets/icons/logo.png" /></Link>
+
           </Group>
           <Group gap={5} visibleFrom="md">
             {items}
@@ -83,7 +91,11 @@ export default function Header() {
             visibleFrom="xs"
           />
           <Group>
-            <Button component="a" href="/login" variant="filled">Login</Button>
+            {
+              !currentUser.username ? <ButtonLink name='Login' href='/login' style='1'></ButtonLink>
+                :
+                <Link href="/profile"><Avatar radius='xl' alt="WEB_LOGO" src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${currentUser.image}`} /></Link>
+            }
           </Group>
         </div>
       </Container>

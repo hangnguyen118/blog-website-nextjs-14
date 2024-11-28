@@ -14,7 +14,7 @@ export default async function Page() {
         title: "A modern React components library",
         description: "Build fully functional accessible web applications faster than ever – Mantine includes more than 120 customizable components and hooks to cover you in any situation",
         highlight: 'modern',
-        slug: 'highlight-article-2'
+        slug: 'ocean-1'
     }
     return (
         <>

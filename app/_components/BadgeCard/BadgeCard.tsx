@@ -1,10 +1,12 @@
 import { IconHeart } from '@tabler/icons-react';
-import { Card, Image, Text, Group, Badge, Button, ActionIcon, CardSection } from '@mantine/core';
+import { Card, Image, Text, Group, Badge, ActionIcon, CardSection } from '@mantine/core';
 import classes from './BadgeCard.module.css';
 import { BlogCardProps } from '@/types';
 import { formatDate } from '@/untils/strapi.utils';
+import Link from 'next/link';
+import ButtonLink from '../ButtonLink/ButtonLink';
 
-export function BadgeCard({ id, previewImage, title, description, badges, updatedAt }: BlogCardProps) {
+export function BadgeCard({ id, previewImage, title, description, badges, updatedAt, slug }: BlogCardProps) {
     badges = [
         { emoji: '☀️', label: 'Sunny weather' },
         { emoji: '🦓', label: 'Onsite zoo' },
@@ -28,7 +30,7 @@ export function BadgeCard({ id, previewImage, title, description, badges, update
                 <Group justify="apart">
                     <Text fz="lg" fw={500}>
                         {title}
-                    </Text>                    
+                    </Text>
                 </Group>
                 <Text size="sm">{formatDate(updatedAt)}</Text>
                 <Text fz="sm" mt="xs">
@@ -45,9 +47,7 @@ export function BadgeCard({ id, previewImage, title, description, badges, update
             </CardSection>
 
             <Group mt="xs">
-                <Button radius="md" style={{ flex: 1 }}>
-                    Show details
-                </Button>
+                <ButtonLink name='Show details' size='sm' href={`/blog/${slug}`} style='1'></ButtonLink>
                 <ActionIcon variant="default" radius="md" size={36}>
                     <IconHeart className={classes.like} stroke={1.5} />
                 </ActionIcon>

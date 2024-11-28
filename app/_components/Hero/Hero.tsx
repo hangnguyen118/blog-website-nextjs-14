@@ -1,5 +1,6 @@
-import { Container, Title, Text, Button } from '@mantine/core';
+import { Container, Title, Text } from '@mantine/core';
 import classes from './Hero.module.css';
+import ButtonLink from '../ButtonLink/ButtonLink';
 
 export function Hero() {
   return (
@@ -20,20 +21,11 @@ export function Hero() {
               Nhanh chóng tiện lợi
             </Title>
 
-            <Text className={classes.description} mt={30}>
+            <Text className={classes.description} mt={30} mb={20}>
               Build fully functional accessible web applications with ease – Mantine includes more
               than 100 customizable components and hooks to cover you in any situation
             </Text>
-
-            <Button
-              variant="gradient"
-              gradient={{ from: 'pink', to: 'yellow' }}
-              size="xl"
-              className={classes.control}
-              mt={40}
-            >
-              Bắt đầu ngay
-            </Button>
+            <ButtonLink name='Bắt đầu ngay' size='md' href='/create_blog' style='1'></ButtonLink>
           </div>
         </div>
       </Container>
