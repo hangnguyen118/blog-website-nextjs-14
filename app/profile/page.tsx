@@ -8,7 +8,6 @@ import { RootState } from "../_store/store";
 import { useForm } from "@mantine/form";
 import { useEffect } from "react";
 import userService from "../_services/UserService";
-import Link from "next/link";
 
 export default function Page() {
   const router = useRouter();
