@@ -25,7 +25,7 @@ export function Hero() {
               Build fully functional accessible web applications with ease – Mantine includes more
               than 100 customizable components and hooks to cover you in any situation
             </Text>
-            <ButtonLink name='Bắt đầu ngay' size='md' href='/create_blog' style='1'></ButtonLink>
+            <ButtonLink name='Bắt đầu ngay' href='/create_blog' style='1'></ButtonLink>
           </div>
         </div>
       </Container>
